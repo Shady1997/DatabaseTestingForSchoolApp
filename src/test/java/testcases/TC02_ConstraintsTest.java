@@ -10,7 +10,6 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.fail;
 
 public class TC02_ConstraintsTest extends TestBase{
-
     @Test
     public void testUniqueConstraint() {
         try {

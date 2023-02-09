@@ -1,0 +1,1 @@
+mysql --user="root" < "eclipse-workspace\DatabaseTestingForSchoolApp\stm-school.sql"

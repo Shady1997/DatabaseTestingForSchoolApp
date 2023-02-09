@@ -1,0 +1,1008 @@
+dyzinemi@lyft.live
+create database for school using sql
+
+Here is a sample SQL script that can be used to create a database for a school:
+
+sql
+Copy code
+CREATE DATABASE school;
+
+USE school;
+
+CREATE TABLE students (
+    student_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    date_of_birth DATE NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE
+);
+
+CREATE TABLE classes (
+    class_id INT PRIMARY KEY AUTO_INCREMENT,
+    class_name VARCHAR(50) NOT NULL,
+    class_teacher VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE enrolments (
+    enrolment_id INT PRIMARY KEY AUTO_INCREMENT,
+    student_id INT NOT NULL,
+    class_id INT NOT NULL,
+    enrolment_date DATE NOT NULL,
+    FOREIGN KEY (student_id) REFERENCES students(student_id),
+    FOREIGN KEY (class_id) REFERENCES classes(class_id)
+);
+This script creates a database called "school", three tables called "students", "classes", and "enrolments". The "students" table stores information about the students, such as their name, date of birth, and contact information. The "classes" table stores information about the classes, such as their name and teacher. The "enrolments" table stores information about which students are enrolled in which classes and when they were enrolled. The foreign key constraints ensure that the data in the "enrolments" table is consistent with the data in the "students" and "classes" tables.
+
+
+
+
+dyzinemi@lyft.live
+create database for hospital sql
+Here is a sample SQL script to create a database for a hospital:
+
+sql
+Copy code
+CREATE DATABASE hospital;
+
+USE hospital;
+
+CREATE TABLE patients (
+    patient_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    date_of_birth DATE NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    phone_number VARCHAR(20) NOT NULL UNIQUE
+);
+
+CREATE TABLE doctors (
+    doctor_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    specialty VARCHAR(100) NOT NULL,
+    phone_number VARCHAR(20) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE
+);
+
+CREATE TABLE appointments (
+    appointment_id INT PRIMARY KEY AUTO_INCREMENT,
+    patient_id INT NOT NULL,
+    doctor_id INT NOT NULL,
+    appointment_date DATE NOT NULL,
+    appointment_time TIME NOT NULL,
+    FOREIGN KEY (patient_id) REFERENCES patients(patient_id),
+    FOREIGN KEY (doctor_id) REFERENCES doctors(doctor_id)
+);
+This script creates a database called "hospital" and three tables called "patients", "doctors", and "appointments". The "patients" table stores information about the patients, such as their name, date of birth, and contact information. The "doctors" table stores information about the doctors, such as their name, specialty, and contact information. The "appointments" table stores information about the appointments, such as the patient and doctor involved, the date, and time of the appointment. The foreign key constraints ensure that the data in the "appointments" table is consistent with the data in the "patients" and "doctors" tables.
+
+
+
+
+dyzinemi@lyft.live
+create database for market sql
+Here is a sample SQL script to create a database for a market:
+
+sql
+Copy code
+CREATE DATABASE market;
+
+USE market;
+
+CREATE TABLE customers (
+    customer_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    phone_number VARCHAR(20) NOT NULL UNIQUE
+);
+
+CREATE TABLE products (
+    product_id INT PRIMARY KEY AUTO_INCREMENT,
+    product_name VARCHAR(100) NOT NULL,
+    product_description TEXT NOT NULL,
+    product_price DECIMAL(10,2) NOT NULL,
+    product_category VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
+    customer_id INT NOT NULL,
+    order_date DATE NOT NULL,
+    order_total DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+);
+
+CREATE TABLE order_details (
+    order_detail_id INT PRIMARY KEY AUTO_INCREMENT,
+    order_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+This script creates a database called "market" and four tables called "customers", "products", "orders", and "order_details". The "customers" table stores information about the customers, such as their name, address, and contact information. The "products" table stores information about the products, such as their name, description, price, and category. The "orders" table stores information about the orders, such as the customer involved, the date of the order, and the total amount of the order. The "order_details" table stores information about the details of each order, such as the product, quantity, and the order it belongs to. The foreign key constraints ensure that the data in the "order_details" table is consistent with the data in the "customers", "products", and "orders" tables.
+
+
+
+
+dyzinemi@lyft.live
+create database for clothes shop using sql
+Here is a sample SQL script to create a database for a clothes shop:
+
+sql
+Copy code
+CREATE DATABASE clothes_shop;
+
+USE clothes_shop;
+
+CREATE TABLE customers (
+    customer_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    phone_number VARCHAR(20) NOT NULL UNIQUE
+);
+
+CREATE TABLE products (
+    product_id INT PRIMARY KEY AUTO_INCREMENT,
+    product_name VARCHAR(100) NOT NULL,
+    product_description TEXT NOT NULL,
+    product_price DECIMAL(10,2) NOT NULL,
+    product_category VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
+    customer_id INT NOT NULL,
+    order_date DATE NOT NULL,
+    order_total DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+);
+
+CREATE TABLE order_details (
+    order_detail_id INT PRIMARY KEY AUTO_INCREMENT,
+    order_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+This script creates a database called "clothes_shop" and four tables called "customers", "products", "orders", and "order_details". The "customers" table stores information about the customers, such as their name, address, and contact information. The "products" table stores information about the products, such as their name, description, price, and category. The "orders" table stores information about the orders, such as the customer involved, the date of the order, and the total amount of the order. The "order_details" table stores information about the details of each order, such as the product, quantity, and the order it belongs to. The foreign key constraints ensure that the data in the "order_details" table is consistent with the data in the "customers", "products", and "orders" tables.
+
+
+
+
+dyzinemi@lyft.live
+create database for learnning centre using sql
+Here is a sample SQL script to create a database for a learning center:
+
+sql
+Copy code
+CREATE DATABASE learning_center;
+
+USE learning_center;
+
+CREATE TABLE students (
+    student_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    phone_number VARCHAR(20) NOT NULL UNIQUE
+);
+
+CREATE TABLE teachers (
+    teacher_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    phone_number VARCHAR(20) NOT NULL UNIQUE
+);
+
+CREATE TABLE courses (
+    course_id INT PRIMARY KEY AUTO_INCREMENT,
+    course_name VARCHAR(100) NOT NULL,
+    course_description TEXT NOT NULL,
+    course_fee DECIMAL(10,2) NOT NULL,
+    course_category VARCHAR(50) NOT NULL,
+    teacher_id INT NOT NULL,
+    FOREIGN KEY (teacher_id) REFERENCES teachers(teacher_id)
+);
+
+CREATE TABLE enrollments (
+    enrollment_id INT PRIMARY KEY AUTO_INCREMENT,
+    student_id INT NOT NULL,
+    course_id INT NOT NULL,
+    enrollment_date DATE NOT NULL,
+    FOREIGN KEY (student_id) REFERENCES students(student_id),
+    FOREIGN KEY (course_id) REFERENCES courses(course_id)
+);
+This script creates a database called "learning_center" and four tables called "students", "teachers", "courses", and "enrollments". The "students" table stores information about the students, such as their name, address, and contact information. The "teachers" table stores information about the teachers, such as their name, address, and contact information. The "courses" table stores information about the courses, such as their name, description, fee, category, and the teacher involved. The "enrollments" table stores information about the enrollments of each student in a course, such as the student involved, the course, and the date of the enrollment. The foreign key constraints ensure that the data in the "enrollments" table is consistent with the data in the "students", "teachers", and "courses" tables.
+
+
+
+
+dyzinemi@lyft.live
+create database for coffee shop using sql
+Here is a sample SQL script to create a database for a coffee shop:
+
+sql
+Copy code
+CREATE DATABASE coffee_shop;
+
+USE coffee_shop;
+
+CREATE TABLE customers (
+    customer_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    phone_number VARCHAR(20) NOT NULL UNIQUE
+);
+
+CREATE TABLE drinks (
+    drink_id INT PRIMARY KEY AUTO_INCREMENT,
+    drink_name VARCHAR(100) NOT NULL,
+    drink_description TEXT NOT NULL,
+    drink_price DECIMAL(10,2) NOT NULL,
+    drink_category VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
+    customer_id INT NOT NULL,
+    drink_id INT NOT NULL,
+    order_date DATE NOT NULL,
+    order_time TIME NOT NULL,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+    FOREIGN KEY (drink_id) REFERENCES drinks(drink_id)
+);
+This script creates a database called "coffee_shop" and three tables called "customers", "drinks", and "orders". The "customers" table stores information about the customers, such as their name, email, and contact information. The "drinks" table stores information about the drinks, such as their name, description, price, and category. The "orders" table stores information about the orders of each customer, such as the customer involved, the drink, the date and time of the order. The foreign key constraints ensure that the data in the "orders" table is consistent with the data in the "customers" and "drinks" tables.
+
+
+
+
+dyzinemi@lyft.live
+create database for online sports shop using sql
+Here is a sample SQL script to create a database for an online sports shop:
+
+sql
+Copy code
+CREATE DATABASE sports_shop;
+
+USE sports_shop;
+
+CREATE TABLE customers (
+    customer_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    phone_number VARCHAR(20) NOT NULL UNIQUE,
+    address VARCHAR(255) NOT NULL,
+    city VARCHAR(100) NOT NULL,
+    state VARCHAR(100) NOT NULL,
+    postal_code VARCHAR(20) NOT NULL,
+    country VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE products (
+    product_id INT PRIMARY KEY AUTO_INCREMENT,
+    product_name VARCHAR(100) NOT NULL,
+    product_description TEXT NOT NULL,
+    product_price DECIMAL(10,2) NOT NULL,
+    product_category VARCHAR(50) NOT NULL,
+    product_image_url VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
+    customer_id INT NOT NULL,
+    product_id INT NOT NULL,
+    order_date DATE NOT NULL,
+    order_status ENUM('pending', 'shipped', 'delivered') NOT NULL,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+This script creates a database called "sports_shop" and three tables called "customers", "products", and "orders". The "customers" table stores information about the customers, such as their name, email, contact information, and address. The "products" table stores information about the products, such as their name, description, price, category, and image URL. The "orders" table stores information about the orders of each customer, such as the customer involved, the product, the date of the order, and the order status. The foreign key constraints ensure that the data in the "orders" table is consistent with the data in the "customers" and "products" tables.
+
+
+
+
+dyzinemi@lyft.live
+create database for online payment using sql
+Here is a sample SQL script to create a database for online payment:
+
+sql
+Copy code
+CREATE DATABASE online_payment;
+
+USE online_payment;
+
+CREATE TABLE users (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(20) NOT NULL UNIQUE,
+    address VARCHAR(255) NOT NULL,
+    city VARCHAR(100) NOT NULL,
+    state VARCHAR(100) NOT NULL,
+    postal_code VARCHAR(20) NOT NULL,
+    country VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE transactions (
+    transaction_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    transaction_type ENUM('debit', 'credit') NOT NULL,
+    transaction_amount DECIMAL(10,2) NOT NULL,
+    transaction_date DATE NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE payment_methods (
+    payment_method_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    payment_method_type ENUM('credit_card', 'debit_card', 'net_banking') NOT NULL,
+    card_number VARCHAR(20) NOT NULL,
+    card_holder_name VARCHAR(100) NOT NULL,
+    expiry_date DATE NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+This script creates a database called "online_payment" and three tables called "users", "transactions", and "payment_methods". The "users" table stores information about the users, such as their name, email, contact information, and address. The "transactions" table stores information about the transactions, such as the user involved, the type of transaction, the amount, and the date of the transaction. The "payment_methods" table stores information about the payment methods of each user, such as the type of payment method, the card number, the card holder name, and the expiry date. The foreign key constraints ensure that the data in the "transactions" and "payment_methods" tables is consistent with the data in the "users" table.
+
+
+
+
+dyzinemi@lyft.live
+create complex database for online store app using sql
+Here is a sample SQL script to create a complex database for an online store app:
+
+sql
+Copy code
+CREATE DATABASE online_store;
+
+USE online_store;
+
+CREATE TABLE users (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(20) NOT NULL UNIQUE,
+    address VARCHAR(255) NOT NULL,
+    city VARCHAR(100) NOT NULL,
+    state VARCHAR(100) NOT NULL,
+    postal_code VARCHAR(20) NOT NULL,
+    country VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE products (
+    product_id INT PRIMARY KEY AUTO_INCREMENT,
+    product_name VARCHAR(255) NOT NULL,
+    product_description TEXT NOT NULL,
+    product_price DECIMAL(10,2) NOT NULL,
+    product_image VARCHAR(255) NOT NULL,
+    product_category VARCHAR(100) NOT NULL,
+    product_quantity INT NOT NULL
+);
+
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    order_total DECIMAL(10,2) NOT NULL,
+    order_date DATE NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE order_details (
+    order_detail_id INT PRIMARY KEY AUTO_INCREMENT,
+    order_id INT NOT NULL,
+    product_id INT NOT NULL,
+    product_quantity INT NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
+CREATE TABLE payment_methods (
+    payment_method_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    payment_method_type ENUM('credit_card', 'debit_card', 'net_banking') NOT NULL,
+    card_number VARCHAR(20) NOT NULL,
+    card_holder_name VARCHAR(100) NOT NULL,
+    expiry_date DATE NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE transactions (
+    transaction_id INT PRIMARY KEY AUTO_INCREMENT,
+    payment_method_id INT NOT NULL,
+    order_id INT NOT NULL,
+    transaction_amount DECIMAL(10,2) NOT NULL,
+    transaction_date DATE NOT NULL,
+    FOREIGN KEY (payment_method_id) REFERENCES payment_methods(payment_method_id),
+    FOREIGN KEY (order_id) REFERENCES orders(order_id)
+);
+This script creates a database called "online_store" and six tables called "users", "products", "orders", "order_details
+
+
+dyzinemi@lyft.live
+create database for identity app using sql
+Here's an example of how you could create a database for an identity app using SQL:
+
+sql
+Copy code
+CREATE DATABASE identity_app;
+
+USE identity_app;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE sessions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    token VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+This database contains two tables, users and sessions. The users table stores information about registered users, such as their email, password, first name, and last name. The sessions table stores information about active sessions, such as the user associated with the session, the session token, and the timestamps of when the session was created and last updated.
+
+
+
+
+dyzinemi@lyft.live
+create database for fingerprint identity app sql
+Here's an example of how you could create a database for a fingerprint identity app using SQL:
+
+sql
+Copy code
+CREATE DATABASE fingerprint_identity_app;
+
+USE fingerprint_identity_app;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE fingerprints (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    fingerprint_data BLOB NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+This database contains two tables, users and fingerprints. The users table stores information about registered users, such as their email, password, first name, and last name. The fingerprints table stores information about registered fingerprints, such as the user associated with the fingerprint, the binary representation of the fingerprint data, and the timestamps of when the fingerprint was registered and last updated.
+
+
+
+
+dyzinemi@lyft.live
+create database for social media app using sql
+Here's an example of how you could create a database for a social media app using SQL:
+
+sql
+Copy code
+CREATE DATABASE social_media_app;
+
+USE social_media_app;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    profile_picture VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE posts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    content TEXT NOT NULL,
+    image VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE comments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    post_id INT NOT NULL,
+    user_id INT NOT NULL,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (post_id) REFERENCES posts(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE likes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    post_id INT NOT NULL,
+    user_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (post_id) REFERENCES posts(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE followers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    follower_id INT NOT NULL,
+    followee_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (follower_id) REFERENCES users(id),
+    FOREIGN KEY (followee_id) REFERENCES users(id)
+);
+This database contains five tables, users, posts, comments, likes, and followers. The users table stores information about registered users, such as their email, password, first name, last name, profile picture, and timestamps of when the user was created and last updated. The posts table stores information about posts made by users, such as the content of the post, the image associated with the post, and the timestamps of when the post was created and last updated. The comments table stores information about comments made on posts, such as the content of the comment and the timestamps of when the comment was created
+
+
+
+
+dyzinemi@lyft.live
+create database for chat app using sql
+Here's an example of how you could create a database for a chat app using SQL:
+
+sql
+Copy code
+CREATE DATABASE chat_app;
+
+USE chat_app;
+
+CREATE TABLE users (
+  user_id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  password VARCHAR(100) NOT NULL,
+  status VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE conversations (
+  conversation_id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE messages (
+  message_id INT AUTO_INCREMENT PRIMARY KEY,
+  conversation_id INT NOT NULL,
+  sender_id INT NOT NULL,
+  message TEXT NOT NULL,
+  sent_at DATETIME NOT NULL,
+  FOREIGN KEY (conversation_id) REFERENCES conversations(conversation_id),
+  FOREIGN KEY (sender_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE conversation_participants (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  conversation_id INT NOT NULL,
+  user_id INT NOT NULL,
+  FOREIGN KEY (conversation_id) REFERENCES conversations(conversation_id),
+  FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+Note that this is just one way to design the database, and the specific requirements of your chat app may dictate different or additional tables, columns, or relationships.
+
+
+
+
+dyzinemi@lyft.live
+create database for library using sql
+Here's an example of how you could create a database for a library using SQL:
+
+sql
+Copy code
+CREATE DATABASE library;
+
+USE library;
+
+CREATE TABLE books (
+  book_id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(100) NOT NULL,
+  author VARCHAR(100) NOT NULL,
+  publisher VARCHAR(100) NOT NULL,
+  ISBN VARCHAR(20) NOT NULL,
+  publication_date DATE NOT NULL,
+  category VARCHAR(50) NOT NULL,
+  number_of_pages INT NOT NULL,
+  available_copies INT NOT NULL
+);
+
+CREATE TABLE members (
+  member_id INT AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  address VARCHAR(200) NOT NULL,
+  membership_start_date DATE NOT NULL,
+  membership_end_date DATE NOT NULL
+);
+
+CREATE TABLE loans (
+  loan_id INT AUTO_INCREMENT PRIMARY KEY,
+  book_id INT NOT NULL,
+  member_id INT NOT NULL,
+  loan_date DATE NOT NULL,
+  due_date DATE NOT NULL,
+  returned_date DATE,
+  FOREIGN KEY (book_id) REFERENCES books(book_id),
+  FOREIGN KEY (member_id) REFERENCES members(member_id)
+);
+
+CREATE TABLE reservations (
+  reservation_id INT AUTO_INCREMENT PRIMARY KEY,
+  book_id INT NOT NULL,
+  member_id INT NOT NULL,
+  reservation_date DATE NOT NULL,
+  FOREIGN KEY (book_id) REFERENCES books(book_id),
+  FOREIGN KEY (member_id) REFERENCES members(member_id)
+);
+Note that this is just one way to design the database, and the specific requirements of your library management system may dictate different or additional tables, columns, or relationships.
+
+
+
+
+dyzinemi@lyft.live
+creaete database for bank using sql
+Here's an example of how you could create a database for a bank using SQL:
+
+sql
+Copy code
+CREATE DATABASE bank;
+
+USE bank;
+
+CREATE TABLE customers (
+  customer_id INT AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  address VARCHAR(200) NOT NULL,
+  phone_number VARCHAR(20) NOT NULL,
+  date_of_birth DATE NOT NULL
+);
+
+CREATE TABLE accounts (
+  account_number INT AUTO_INCREMENT PRIMARY KEY,
+  customer_id INT NOT NULL,
+  account_type VARCHAR(50) NOT NULL,
+  balance DECIMAL(10,2) NOT NULL,
+  open_date DATE NOT NULL,
+  FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+);
+
+CREATE TABLE transactions (
+  transaction_id INT AUTO_INCREMENT PRIMARY KEY,
+  account_number INT NOT NULL,
+  transaction_type VARCHAR(50) NOT NULL,
+  amount DECIMAL(10,2) NOT NULL,
+  transaction_date DATE NOT NULL,
+  description VARCHAR(200),
+  FOREIGN KEY (account_number) REFERENCES accounts(account_number)
+);
+Note that this is just one way to design the database, and the specific requirements of your bank management system may dictate different or additional tables, columns, or relationships.
+
+
+
+
+dyzinemi@lyft.live
+creaete database for resturant using sql
+Here's an example of how you could create a database for a restaurant using SQL:
+
+sql
+Copy code
+CREATE DATABASE restaurant;
+
+USE restaurant;
+
+CREATE TABLE menu_items (
+  item_id INT AUTO_INCREMENT PRIMARY KEY,
+  item_name VARCHAR(100) NOT NULL,
+  item_description VARCHAR(200),
+  item_price DECIMAL(10,2) NOT NULL,
+  item_category VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE customers (
+  customer_id INT AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
+  email VARCHAR(100),
+  phone_number VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE orders (
+  order_id INT AUTO_INCREMENT PRIMARY KEY,
+  customer_id INT NOT NULL,
+  order_date DATE NOT NULL,
+  order_time TIME NOT NULL,
+  total_price DECIMAL(10,2) NOT NULL,
+  FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+);
+
+CREATE TABLE order_items (
+  order_item_id INT AUTO_INCREMENT PRIMARY KEY,
+  order_id INT NOT NULL,
+  item_id INT NOT NULL,
+  item_quantity INT NOT NULL,
+  FOREIGN KEY (order_id) REFERENCES orders(order_id),
+  FOREIGN KEY (item_id) REFERENCES menu_items(item_id)
+);
+Note that this is just one way to design the database, and the specific requirements of your restaurant management system may dictate different or additional tables, columns, or relationships.
+
+
+
+
+dyzinemi@lyft.live
+create database for clinic using sql
+Here's an example of how you could create a database for a clinic using SQL:
+
+sql
+Copy code
+CREATE DATABASE clinic;
+
+USE clinic;
+
+CREATE TABLE patients (
+  patient_id INT AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
+  dob DATE NOT NULL,
+  gender CHAR(1) NOT NULL,
+  address VARCHAR(200),
+  phone_number VARCHAR(20) NOT NULL,
+  email VARCHAR(100)
+);
+
+CREATE TABLE doctors (
+  doctor_id INT AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
+  speciality VARCHAR(100) NOT NULL,
+  phone_number VARCHAR(20) NOT NULL,
+  email VARCHAR(100)
+);
+
+CREATE TABLE appointments (
+  appointment_id INT AUTO_INCREMENT PRIMARY KEY,
+  patient_id INT NOT NULL,
+  doctor_id INT NOT NULL,
+  appointment_date DATE NOT NULL,
+  appointment_time TIME NOT NULL,
+  FOREIGN KEY (patient_id) REFERENCES patients(patient_id),
+  FOREIGN KEY (doctor_id) REFERENCES doctors(doctor_id)
+);
+
+CREATE TABLE medical_records (
+  record_id INT AUTO_INCREMENT PRIMARY KEY,
+  patient_id INT NOT NULL,
+  doctor_id INT NOT NULL,
+  record_date DATE NOT NULL,
+  diagnosis TEXT,
+  treatment TEXT,
+  FOREIGN KEY (patient_id) REFERENCES patients(patient_id),
+  FOREIGN KEY (doctor_id) REFERENCES doctors(doctor_id)
+);
+Note that this is just one way to design the database, and the specific requirements of your clinic management system may dictate different or additional tables, columns, or relationships.
+
+
+
+
+dyzinemi@lyft.live
+create database for ticket app using sql
+Here is an example of creating a database for a ticket app using SQL:
+
+sql
+Copy code
+CREATE DATABASE ticket_app;
+
+USE ticket_app;
+
+CREATE TABLE event (
+  event_id INT AUTO_INCREMENT PRIMARY KEY,
+  event_name VARCHAR(255) NOT NULL,
+  event_date DATE NOT NULL,
+  event_location VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE ticket (
+  ticket_id INT AUTO_INCREMENT PRIMARY KEY,
+  event_id INT NOT NULL,
+  ticket_price DECIMAL(10,2) NOT NULL,
+  FOREIGN KEY (event_id) REFERENCES event (event_id)
+);
+
+CREATE TABLE customer (
+  customer_id INT AUTO_INCREMENT PRIMARY KEY,
+  customer_name VARCHAR(255) NOT NULL,
+  customer_email VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE order (
+  order_id INT AUTO_INCREMENT PRIMARY KEY,
+  customer_id INT NOT NULL,
+  ticket_id INT NOT NULL,
+  order_date DATETIME NOT NULL,
+  FOREIGN KEY (customer_id) REFERENCES customer (customer_id),
+  FOREIGN KEY (ticket_id) REFERENCES ticket (ticket_id)
+);
+Note: The above SQL code is written in a standard format and may vary based on the specific RDBMS you are using.
+
+
+
+
+dyzinemi@lyft.live
+create database for university using sql
+Here is an example of creating a database for a university using SQL:
+
+sql
+Copy code
+CREATE DATABASE university;
+
+USE university;
+
+CREATE TABLE student (
+  student_id INT AUTO_INCREMENT PRIMARY KEY,
+  student_name VARCHAR(255) NOT NULL,
+  student_email VARCHAR(255) NOT NULL,
+  student_enrollment_year YEAR NOT NULL
+);
+
+CREATE TABLE course (
+  course_id INT AUTO_INCREMENT PRIMARY KEY,
+  course_name VARCHAR(255) NOT NULL,
+  course_description TEXT NOT NULL
+);
+
+CREATE TABLE enrollment (
+  enrollment_id INT AUTO_INCREMENT PRIMARY KEY,
+  student_id INT NOT NULL,
+  course_id INT NOT NULL,
+  enrollment_year YEAR NOT NULL,
+  FOREIGN KEY (student_id) REFERENCES student (student_id),
+  FOREIGN KEY (course_id) REFERENCES course (course_id)
+);
+
+CREATE TABLE instructor (
+  instructor_id INT AUTO_INCREMENT PRIMARY KEY,
+  instructor_name VARCHAR(255) NOT NULL,
+  instructor_email VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE teaches (
+  teaches_id INT AUTO_INCREMENT PRIMARY KEY,
+  instructor_id INT NOT NULL,
+  course_id INT NOT NULL,
+  FOREIGN KEY (instructor_id) REFERENCES instructor (instructor_id),
+  FOREIGN KEY (course_id) REFERENCES course (course_id)
+);
+Note: The above SQL code is written in a standard format and may vary based on the specific RDBMS you are using.
+
+
+
+
+dyzinemi@lyft.live
+create database for police office using sql
+Here is an example of creating a database for a police office using SQL:
+
+sql
+Copy code
+CREATE DATABASE police_office;
+
+USE police_office;
+
+CREATE TABLE officer (
+  officer_id INT AUTO_INCREMENT PRIMARY KEY,
+  officer_name VARCHAR(255) NOT NULL,
+  officer_badge_number VARCHAR(255) NOT NULL,
+  officer_rank VARCHAR(255) NOT NULL,
+  officer_hire_date DATE NOT NULL
+);
+
+CREATE TABLE department (
+  department_id INT AUTO_INCREMENT PRIMARY KEY,
+  department_name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE works_at (
+  works_at_id INT AUTO_INCREMENT PRIMARY KEY,
+  officer_id INT NOT NULL,
+  department_id INT NOT NULL,
+  FOREIGN KEY (officer_id) REFERENCES officer (officer_id),
+  FOREIGN KEY (department_id) REFERENCES department (department_id)
+);
+
+CREATE TABLE crime_report (
+  crime_report_id INT AUTO_INCREMENT PRIMARY KEY,
+  report_date DATE NOT NULL,
+  crime_type VARCHAR(255) NOT NULL,
+  crime_location VARCHAR(255) NOT NULL,
+  officer_id INT NOT NULL,
+  FOREIGN KEY (officer_id) REFERENCES officer (officer_id)
+);
+
+CREATE TABLE suspect (
+  suspect_id INT AUTO_INCREMENT PRIMARY KEY,
+  suspect_name VARCHAR(255) NOT NULL,
+  suspect_address VARCHAR(255) NOT NULL,
+  suspect_contact_number VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE implicated_in (
+  implicated_in_id INT AUTO_INCREMENT PRIMARY KEY,
+  suspect_id INT NOT NULL,
+  crime_report_id INT NOT NULL,
+  FOREIGN KEY (suspect_id) REFERENCES suspect (suspect_id),
+  FOREIGN KEY (crime_report_id) REFERENCES crime_report (crime_report_id)
+);
+Note: The above SQL code is written in a standard format and may vary based on the specific RDBMS you are using.
+
+
+
+
+dyzinemi@lyft.live
+create database for report app using sql
+A database for a report app could be created in SQL as follows:
+
+sql
+Copy code
+CREATE DATABASE report_app;
+
+USE report_app;
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  role ENUM('admin', 'user') NOT NULL
+);
+
+CREATE TABLE reports (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  description TEXT NOT NULL,
+  file VARCHAR(255) NOT NULL,
+  user_id INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE report_types (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE report_category (
+  report_id INT NOT NULL,
+  type_id INT NOT NULL,
+  PRIMARY KEY (report_id, type_id),
+  FOREIGN KEY (report_id) REFERENCES reports(id),
+  FOREIGN KEY (type_id) REFERENCES report_types(id)
+);
+Note: This is just an example schema and can be modified based on the specific requirements of the report app.
+
+
+
