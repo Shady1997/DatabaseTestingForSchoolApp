@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="STM School Database">
-    <test verbose="1" parallel="tests" thread-count = "2" preserve-order="true" name="Check CRUD Operation on School Tables">
+    <test verbose="1" preserve-order="true" name="Check CRUD Operation on School Tables">
         <classes>
-            <class name="testcases.TC01_CRUDTest"/>
+            <class name="testcases.TC01_CRUDTest">
+            </class>
         </classes>
     </test>
 </suite>

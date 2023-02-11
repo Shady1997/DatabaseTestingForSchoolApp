@@ -55,11 +55,14 @@ public class TC02_ConstraintsTest extends TestBase{
 
     private void insertDuplicateValue() throws SQLException {
         // insert code to insert a duplicate value into the database here
+        // Insert a new record into the database
         PreparedStatement statement = Utility.con.prepareStatement(
-                "INSERT INTO users (ID, username, password) VALUES (?, ?, ?)");
-        statement.setString(1, "3");
-        statement.setString(2, "shady");
-        statement.setString(3, "shady");
+                "INSERT INTO students (first_name, last_name, date_of_birth, address, email) VALUES (?, ?, ?, ?, ?)");
+        statement.setString(1, FIRSTNAME);
+        statement.setString(2, LASTNAME);
+        statement.setString(3, BIRTHDATE);
+        statement.setString(4, ADDRESS);
+        statement.setString(5, EMAIL);
     }
 
     private void insertNullValue() throws SQLException {
